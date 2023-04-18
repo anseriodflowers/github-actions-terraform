@@ -11,8 +11,7 @@ jobs:
       - name: AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::392720761747:role/terraform-actions
           aws-region: us-east-1  
       - name: Terraform Install
         uses: hashicorp/setup-terraform@v1
