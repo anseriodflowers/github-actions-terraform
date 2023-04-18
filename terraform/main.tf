@@ -1,25 +1,9 @@
-# # Terraform Settings Block
-# terraform {
-#   required_providers {
-#     aws = {
-#       source  = "hashicorp/aws"
-#       #version = "~> 3.0" # Optional but recommended in production
-#     }
-#   }
-# }
 
-# # Provider Block
-# provider "aws" {
-#   profile = "default" # AWS Credentials Profile configured on your local desktop terminal  $HOME/.aws/credentials
-#   region  = "us-east-1"
-# }
 
 # # Resource Block
 resource "aws_instance" "ec2demo" {
   ami = "ami-005f9685cb30f234b" # Amazon Linux in us-east-1, update as per your region
   instance_type = var.instance_type
-  #instance_type = var.instance_type_map.["prod"]
-  #instance_type = var.instance_type_list.[1]
   vpc_security_group_ids = [ aws_security_group.vpc-web.id, aws_security_group.vpc-ssh.id ]
   user_data = file("${path.module}/userdata.tpl") 
   count = 3
