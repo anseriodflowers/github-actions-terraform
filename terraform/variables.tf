@@ -1,7 +1,7 @@
 variable "instance_keypair" {
   description = "E2C instance keypair"
   type = string
-  default = "terrformkey"
+  default = "E2CTutorial"
 }
 
 variable "instance_type" {
